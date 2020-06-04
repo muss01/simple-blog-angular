@@ -1,0 +1,49 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 mt-3" *ngFor="let post of posts | paginate: { id: 'listing_pagination',
+        itemsPerPage: 10,
+        currentPage: page,
+        totalItems: totalRecords }">
+            <!--Card-->
+            <mdb-card>
+
+                <!--Card image-->
+                <div class="view overlay waves-light" mdbWavesEffect>
+                <mdb-card-img src="{{ post.postImage }}" alt="{{ post.postTitle }}"></mdb-card-img>
+                <a [routerLink]="['/blog/', post.postSlug]">
+                    <div class="mask rgba-white-slight"></div>
+                </a>
+                </div>
+                <!--/.Card image-->
+            
+                <!--Card content-->
+                <mdb-card-body>
+            
+                <!--Title-->
+                <mdb-card-title>
+                    <h4>
+                        <a [routerLink]="['/blog/', post.postSlug]">{{ post.postTitle }}</a>
+                    </h4>
+                </mdb-card-title>
+            
+                <hr>
+                <!--Text-->
+                <p class="font-small grey-dark-text mb-0" [innerHtml]="post.postBody | slice:0:60"></p>
+                </mdb-card-body>
+                <!--/.Card content-->
+                <!-- Card footer -->
+                <mdb-card-footer class="mdb-color lighten-3 text-center">
+                <ul class="list-unstyled list-inline font-small mt-3">
+                    <li class="list-inline-item pr-2 white-text">
+                    <mdb-icon far icon="clock" class="pr-1"></mdb-icon>{{ post.postCreatedAt | date }}</li>
+                </ul>
+                </mdb-card-footer>
+                <!-- Card footer -->
+            </mdb-card>
+            <!--/.Card-->
+        </div>
+        <div class="col-md-12 mt-5 text-center" *ngIf="pagination">
+            <pagination-controls  id="listing_pagination" maxSize="5" directionLinks="true" (pageChange)="page = $event"></pagination-controls>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-12">
+                    <!--Featured image-->
+                    <mdb-card cascade="true" wider="true" reverse="true">
+                    <div class="view view-cascade overlay waves-light" mdbWavesEffect>
+                        <mdb-card-img [src]="post?.postImage" [alt]="post?.postTitle"></mdb-card-img>
+                        <div class="mask rgba-white-slight"></div>
+                    </div>
+            
+                    <!--Post data-->
+                    <mdb-card-body cascade="true" class="text-center">
+                        <h2 class="font-weight-bold">
+                            {{ post?.postTitle }}
+                        </h2>
+                        <p>{{ post?.postCreatedAt | date }}</p>
+                    </mdb-card-body>
+                    <!--Post data-->
+                    </mdb-card>
+            
+                    <!--Excerpt-->
+                    <div class="excerpt mt-5">
+                    <p [innerHtml]="post?.postBody">
+                    </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
