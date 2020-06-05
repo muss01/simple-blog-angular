@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-4 mt-3" *ngFor="let post of posts | paginate: { id: 'listing_pagination',
-        itemsPerPage: 10,
+        itemsPerPage: 4,
         currentPage: page,
         totalItems: totalRecords }">
             <!--Card-->
@@ -28,7 +28,7 @@
             
                 <hr>
                 <!--Text-->
-                <p class="font-small grey-dark-text mb-0" [innerHtml]="post.postBody | slice:0:60"></p>
+                <p class="font-small grey-dark-text mb-0">{{ post.postExcerpt | slice:0:60 }}</p>
                 </mdb-card-body>
                 <!--/.Card content-->
                 <!-- Card footer -->

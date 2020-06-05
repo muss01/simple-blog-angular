@@ -43,6 +43,8 @@ export class PostsComponent implements OnInit {
   searchPost(query: string){
     this.postservice.searchPost(query).subscribe((posts: any) => {
       this.posts = posts.data;
+      this.totalRecords = posts.data.length;
+      this.page = 1;
     })
   }
 }
